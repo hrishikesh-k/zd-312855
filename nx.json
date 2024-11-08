@@ -1,0 +1,50 @@
+{
+  "release": {
+    "projects": ["*"],
+    "version": {
+      "conventionalCommits": true
+    },
+    "changelog": {
+      "workspaceChangelog": {
+        "createRelease": "github"
+      },
+      "projectChangelogs": {
+        "renderOptions": {
+          "authors": true,
+          "commitReferences": true,
+          "versionTitleDate": true
+        }
+      }
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/src/**/*"],
+    "production": [
+      "!{projectRoot}/src/**/*.test.tsx",
+      "!{projectRoot}/dist",
+      "!{projectRoot}/src/test-setup.[jt]s"
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "inputs": ["production"],
+      "dependsOn": ["^build"],
+      "cache": true
+    },
+    "build:affected": {
+      "inputs": ["production"],
+      "dependsOn": ["^build"],
+      "cache": true
+    },
+    "test": {
+      "inputs": ["default", "^production"],
+      "cache": true
+    }
+  },
+  "defaultBase": "origin/main",
+  "workspaceLayout": {
+    "appsDir": "src"
+  },
+  "includedScripts": ["build", "build:affected", "test", "test:affected"],
+  "useInferencePlugins": false
+}

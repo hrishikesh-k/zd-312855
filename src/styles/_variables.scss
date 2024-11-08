@@ -1,0 +1,112 @@
+/*
+ ! DEV NOTE: Refrain from adding any CSS classes or styling directly within this
+ ! file.  All component-specific styles should be defined within their respective
+ ! SCSS files. Each component should have its own dedicated SCSS file.  By
+ ! adhering to these guidelines, we can ensure consistency, modularity, and
+ ! maintainability within our codebase, facilitating smoother collaboration and
+ ! development processes.
+ */
+
+$html-font-size: 16px;
+
+// * Gutters
+$gutterMobile: 8px;
+$gutterTablet: 12px;
+$gutterLargeDesktop: 16px;
+
+// * Breakpoints
+$bpMaxMobile: 767px;
+$bpMinTablet: 768px;
+$bpMinLargeTablet: 1000px;
+$bpMinDesktop: 992px;
+$bpMinLargeDesktop: 1200px;
+$bpMinExtraLargeDesktop: 1400px;
+
+// * Easing
+$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+$easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+
+// * Animation Time
+$animTime: 0.5s;
+
+// * Typography
+// Font Families
+$font-primary: var(--font-01); //"Prelo Slab"
+$font-secondary: var(--font-02); //"Roboto"
+
+// Font Weights
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Font Sizes
+$font-size-sm-1: 10px;
+$font-size-sm-2: 12px;
+$font-size-sm-3: 14px;
+$font-size-sm-4: 16px;
+$font-size-md-1: 18px;
+$font-size-md-2: 20px;
+$font-size-md-3: 22px;
+$font-size-md-4: 24px;
+$font-size-md-5: 28px;
+$font-size-lg-1: 32px;
+$font-size-lg-2: 36px;
+$font-size-lg-3: 40px;
+$font-size-lg-4: 44px;
+$font-size-lg-5: 48px;
+$font-size-lg-6: 52px;
+$font-size-lg-7: 56px;
+$font-size-lg-8: 60px;
+$font-size-lg-9: 64px;
+$font-size-lg-10: 90px;
+$font-size-xl-1: 120px;
+
+// Line Heights
+$font-height-sm-1: 16px;
+$font-height-sm-2: 18px;
+$font-height-sm-3: 20px;
+$font-height-sm-4: 24px;
+$font-height-sm-5: 28px;
+$font-height-md-1: 32px;
+$font-height-md-2: 36px;
+$font-height-md-3: 40px;
+$font-height-lg-1: 44px;
+$font-height-lg-2: 48px;
+$font-height-lg-3: 52px;
+$font-height-lg-4: 56px;
+$font-height-lg-5: 60px;
+$font-height-lg-6: 64px;
+$font-height-lg-7: 76px;
+$font-height-xl-1: 96px;
+$font-height-xl-2: 140px;
+
+// Letter Spacing
+$letter-spacing-sm: 0;
+$letter-spacing-md: 1px;
+$letter-spacing-lg: 1.4px;
+
+// * Shadows
+$shadow-100: 1px 1px 4px 0px rgba(0, 32, 91, 0.12);
+
+// Z-indices
+$zindex-overlay: 1200;
+
+$spacing01: 2px;
+$spacing02: 4px;
+$spacing03: 6px;
+$spacing04: 8px;
+$spacing05: 12px;
+$spacing06: 16px;
+$spacing07: 20px;
+$spacing08: 24px;
+$spacing09: 32px;
+$spacing10: 40px;
+$spacing11: 48px;
+$spacing12: 56px;
+$spacing13: 64px;
+$spacing14: 72px;
+$spacing15: 80px;
+$spacing16: 88px;
+

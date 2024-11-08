@@ -1,0 +1,190 @@
+/*
+ ! DEV NOTE: Refrain from adding any CSS classes or styling directly within this
+ ! file.  All component-specific styles should be defined within their respective
+ ! SCSS files. Each component should have its own dedicated SCSS file.  By
+ ! adhering to these guidelines, we can ensure consistency, modularity, and
+ ! maintainability within our codebase, facilitating smoother collaboration and
+ ! development processes.
+ */
+
+@import './grid';
+@import '../../../../styles/variables';
+@import '../../../../styles/utils';
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+ol,
+ul,
+li,
+table,
+button {
+  color: var(--neutral-900);
+  font-family: var(--font-01);
+}
+
+h1 {
+  @include heading-1-small;
+
+  @include tablet {
+    @include heading-1 
+  }
+}
+
+h2 {
+  @include heading-2-small;
+
+  @include tablet {
+    @include heading-2 
+  }
+}
+
+h3 {
+    @include heading-3-small;
+  
+    @include tablet {
+      @include heading-3
+    }
+}
+
+h4 {
+  @include heading-4-small;
+  
+  @include tablet {
+    @include heading-4
+  }
+}
+
+h5 {
+  @include heading-5-small;
+  
+  @include tablet {
+    @include heading-5
+  }
+}
+
+h6 {
+  @include heading-6-small;
+  
+  @include tablet {
+    @include heading-6
+  }
+}
+
+blockquote {
+  background-color: var(--accent-a-500);
+  @include block-quote-small;
+  text-align: center;
+  padding: rem(64px) rem(32px);
+
+  @include tablet {
+    @include block-quote;
+    padding: rem(80px) rem(32px);
+  }
+
+  @include desktop {
+    padding: rem(96px) rem(112px);
+  }
+
+  hr {
+    width: rem(26px);
+    margin: rem(32px) auto;
+  }
+
+  p,
+  footer p {
+    color: var(--white-100);
+   @include caption;
+  }
+
+  footer {
+    &:before {
+      background-color: var(--white-100);
+      content: '';
+      display: block;
+      height: rem(2px);
+      margin: 32px auto;
+      width: rem(26px);
+    }
+
+    p {
+      @include caption;
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+  margin: auto;
+}
+
+ol,
+ul {
+  li {
+    @include body-small;
+    margin-bottom: rem(8px);
+
+    &:only-child,
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+p {
+  @include body-medium;
+}
+
+table {
+  // border
+  border-spacing: 0;
+  border-collapse: separate;
+  border-radius: rem(5px);
+  border: 1px solid var(--neutral-300);
+
+  th:not(:last-child) {
+    border-right: 1px solid var(--neutral-300);
+  }
+
+  tr:first-child th:first-child {
+    border-top-left-radius: rem(5px);
+  }
+
+  tr:first-child th:last-child {
+    border-top-right-radius: rem(5px);
+  }
+
+  td:not(:last-child) {
+    border-right: 1px solid var(--neutral-300);
+  }
+
+  tr:not(:last-child) td {
+    border-bottom: 1px solid var(--neutral-300);
+  }
+
+  th {
+    @include caption-heavy;
+    color: var(--neutral-300);
+    background-color: var(--neutral-900);
+    padding: rem(12px);
+  }
+  td {
+    @include caption;
+    padding: rem(12px);
+  }
+
+  @include tablet {
+    th {
+      @include body-small-heavy;
+    }
+
+    td {
+      @include body-small;
+    }
+  }
+}
+

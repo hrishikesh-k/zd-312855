@@ -1,0 +1,24 @@
+{
+  "name": "@dd/base-theme",
+  "version": "1.13.0",
+  "description": "The base theme",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "dxp-xmc-fed",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "clean-css": "^5.3.3",
+    "css-loader": "^6.10.0",
+    "cssnano": "^6.0.3",
+    "mini-css-extract-plugin": "^2.8.0",
+    "sass": "^1.70.0",
+    "sass-loader": "^14.1.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "files": [
+    "dist"
+  ]
+}

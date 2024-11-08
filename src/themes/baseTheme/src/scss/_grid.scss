@@ -1,0 +1,8 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/utils';
+
+.container {
+  @include extra-large-desktop {
+    max-width: 1600px;
+  }
+}

@@ -1,0 +1,577 @@
+@import '../../../styles/utils';
+
+$largeButtonSpacing: rem(12px) rem(24px);
+$smallButtonSpacing: rem(8px) rem(16px);
+$largeButtonWithBorderSpacing: rem(10px) rem(22px);
+$smallButtonWithBorderSpacing: rem(6px) rem(14px);
+
+.button {
+  .link {
+    @include transition((color, background-color, border-color));
+
+    background-color: var(--primary-500);
+    color: var(--white-100);
+    display: inline-flex;
+    gap: rem(12px);
+    align-items: center;
+    font-size: rem(16px);
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: rem(16px);
+    padding: $largeButtonSpacing;
+    border: 0;
+    border-radius: rem(24px);
+    text-decoration: none;
+
+    svg {
+      @include transition((fill, transform));
+      transform: none;
+
+      path {
+        fill: var(--white-100);
+      }
+    }
+
+    &:hover {
+      background-color: var(--primary-600);
+    }
+
+    &:active {
+      background-color: var(--primary-650);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: var(--neutral-200);
+      color: var(--neutral-500);
+
+      svg {
+        path {
+          fill: var(--neutral-500);
+        }
+      }
+    }
+  }
+
+  //creating disabled styles for <a> tags
+  &--disabled {
+    .link {
+      cursor: not-allowed;
+      background-color: var(--neutral-200);
+      color: var(--neutral-500);
+
+      svg {
+        path {
+          fill: var(--neutral-500);
+        }
+      }
+    }
+
+    &:hover {
+      .link {
+        background-color: var(--neutral-200);
+      }
+    }
+  }
+
+  &--dark-mode {
+    .link {
+      color: var(--primary-500);
+      background-color: var(--white-100);
+
+      svg {
+        path {
+          fill: var(--primary-500);
+        }
+      }
+
+      &:hover {
+        background-color: var(--primary-100);
+      }
+
+      &:active {
+        background-color: var(--primary-150);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: var(--white-15);
+        color: var(--neutral-500);
+
+        svg {
+          path {
+            fill: var(--neutral-500);
+          }
+        }
+      }
+    }
+
+    //creating disabled styles for <a> tags
+    &.button--disabled {
+      .link {
+        cursor: not-allowed;
+        background-color: var(--white-15);
+        color: var(--neutral-500);
+
+        svg {
+          path {
+            fill: var(--neutral-500);
+          }
+        }
+      }
+    }
+  }
+
+  &--small {
+    .link {
+      padding: $smallButtonSpacing;
+      font-size: rem(14px);
+    }
+
+    svg {
+      height: rem(12px);
+      width: rem(12px);
+    }
+  }
+
+  &--animate-right {
+    &:hover {
+      svg {
+        transform: translateX(rem(5px));
+      }
+    }
+    svg {
+      @include transition(transform);
+    }
+  }
+
+  &--animate-left {
+    &:hover {
+      svg {
+        transform: translateX(rem(-5px));
+      }
+    }
+    svg {
+      @include transition(transform);
+    }
+  }
+
+  &--no-text {
+    .link {
+      gap: 0;
+    }
+  }
+
+  &--text-button {
+    .link {
+      background-color: transparent;
+      color: var(--primary-500);
+      border: 0;
+      gap: rem(8px);
+      padding: 0;
+
+      svg {
+        path {
+          fill: var(--primary-500);
+        }
+      }
+
+      &:hover {
+        background-color: transparent;
+        color: var(--primary-600);
+
+        svg {
+          path {
+            fill: var(--primary-600);
+          }
+        }
+      }
+
+      &:active {
+        background-color: transparent;
+        color: var(--primary-650);
+
+        svg {
+          path {
+            fill: var(--primary-650);
+          }
+        }
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: transparent;
+        color: var(--primary-200);
+        border: 0;
+        padding: 0;
+
+        svg {
+          path {
+            fill: var(--primary-200);
+          }
+        }
+      }
+    }
+
+    //creating disabled styles for <a> tags
+    &.button--disabled {
+      .link {
+        cursor: not-allowed;
+        background-color: transparent;
+        color: var(--primary-200);
+        border: 0;
+        padding: 0;
+
+        svg {
+          path {
+            fill: var(--primary-200);
+          }
+        }
+
+        &.button--small {
+          padding: $smallButtonSpacing;
+        }
+      }
+    }
+
+    &.button--dark-mode {
+      .link {
+        background-color: transparent;
+        border: 0;
+        padding: $largeButtonSpacing;
+        color: var(--white-100);
+
+        svg {
+          path {
+            fill: var(--white-100);
+          }
+        }
+
+        &.button--small {
+          padding: $smallButtonSpacing;
+        }
+
+        &:hover,
+        &:active {
+          background-color: transparent;
+          color: var(--primary-100);
+
+          svg {
+            path {
+              fill: var(--primary-100);
+            }
+          }
+        }
+
+        &:hover {
+          border-radius: 0;
+          border-bottom: rem(2px) solid var(--primary-100);
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+          background-color: transparent;
+          color: var(--white-40);
+
+          svg {
+            path {
+              fill: var(--white-40);
+            }
+          }
+        }
+      }
+
+      //creating disabled styles for <a> tags
+      &.button--disabled {
+        .link {
+          cursor: not-allowed;
+          background-color: transparent;
+          color: var(--white-40);
+          border: 0;
+          padding: $largeButtonSpacing;
+
+          svg {
+            path {
+              fill: var(--white-40);
+            }
+          }
+
+          &.button--small {
+            padding: $smallButtonSpacing;
+          }
+        }
+      }
+    }
+  }
+
+  &--secondary-button {
+    .link {
+      background-color: var(--white-100);
+      border: rem(2px) solid var(--primary-500);
+      padding: $largeButtonWithBorderSpacing;
+      color: var(--primary-500);
+
+      svg {
+        path {
+          fill: var(--primary-500);
+        }
+      }
+
+      &:hover {
+        border: 0;
+        padding: $largeButtonSpacing;
+        background-color: var(--primary-500);
+        color: var(--white-100);
+
+        svg {
+          path {
+            fill: var(--white-100);
+          }
+        }
+      }
+
+      &:active {
+        border: 0;
+        padding: $largeButtonSpacing;
+        background-color: var(--primary-600);
+        color: var(--white-100);
+
+        svg {
+          path {
+            fill: var(--white-100);
+          }
+        }
+
+        &.button--small {
+          padding: $smallButtonSpacing;
+        }
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: var(--white-100);
+        border: rem(2px) solid var(--neutral-500);
+        padding: $largeButtonWithBorderSpacing;
+        color: var(--neutral-500);
+
+        svg {
+          path {
+            fill: var(--neutral-500);
+          }
+        }
+
+        &.button--small {
+          padding: $smallButtonWithBorderSpacing;
+        }
+      }
+    }
+
+    &.button--small {
+      .link {
+        padding: $smallButtonWithBorderSpacing;
+
+        &:hover,
+        &:active {
+          padding: $smallButtonSpacing;
+        }
+      }
+    }
+
+    //creating disabled styles for <a> tags
+    &.button--disabled {
+      .link {
+        cursor: not-allowed;
+        background-color: var(--white-100);
+        border: rem(2px) solid var(--neutral-500);
+        padding: $largeButtonWithBorderSpacing;
+        color: var(--neutral-500);
+
+        svg {
+          path {
+            fill: var(--neutral-500);
+          }
+        }
+
+        &.button--small {
+          padding: $smallButtonWithBorderSpacing;
+        }
+      }
+
+      &.button--small {
+        .link {
+          padding: $smallButtonWithBorderSpacing;
+        }
+      }
+    }
+
+    &.button--dark-mode {
+      .link {
+        background-color: transparent;
+        border: rem(2px) solid var(--white-100);
+        padding: $largeButtonWithBorderSpacing;
+        color: var(--white-100);
+
+        svg {
+          path {
+            fill: var(--white-100);
+          }
+        }
+
+        &:hover,
+        &:active {
+          background-color: var(--white-100);
+          color: var(--primary-500);
+
+          svg {
+            path {
+              fill: var(--primary-500);
+            }
+          }
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+          border-color: var(--white-40);
+          color: var(--white-40);
+
+          svg {
+            path {
+              fill: var(--white-40);
+            }
+          }
+        }
+      }
+
+      &.button--small {
+        .link {
+          padding: $smallButtonWithBorderSpacing;
+        }
+      }
+
+      //creating disabled styles for <a> tags
+      &.button--disabled {
+        .link {
+          cursor: not-allowed;
+          border-color: var(--white-40);
+          color: var(--white-40);
+          background-color: transparent;
+
+          svg {
+            path {
+              fill: var(--white-40);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--tertiary-button {
+    .link {
+      background-color: var(--primary-50);
+      color: var(--primary-500);
+
+      svg {
+        path {
+          fill: var(--primary-500);
+        }
+      }
+
+      &:hover {
+        background-color: var(--primary-100);
+      }
+
+      &:active {
+        background-color: var(--primary-150);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        background-color: var(--neutral-200);
+        color: var(--neutral-500);
+
+        svg {
+          path {
+            fill: var(--neutral-500);
+          }
+        }
+      }
+    }
+
+    //creating disabled styles for <a> tags
+    &.button--disabled {
+      .link {
+        cursor: not-allowed;
+        background-color: var(--neutral-200);
+        color: var(--neutral-500);
+
+        svg {
+          path {
+            fill: var(--neutral-500);
+          }
+        }
+      }
+    }
+
+    &.button--dark-mode {
+      .link {
+        background-color: var(--white-20);
+        color: var(--white-100);
+
+        svg {
+          path {
+            fill: var(--white-100);
+          }
+        }
+
+        &:hover {
+          background-color: var(--white-40);
+        }
+
+        &:active {
+          background-color: var(--white-50);
+        }
+
+        &:disabled {
+          cursor: not-allowed;
+          background-color: var(--white-10);
+          color: var(--neutral-550);
+
+          svg {
+            path {
+              fill: var(--neutral-550);
+            }
+          }
+        }
+      }
+
+      //creating disabled styles for <a> tags
+      &.button--disabled {
+        .link {
+          cursor: not-allowed;
+          background-color: var(--white-10);
+          color: var(--neutral-550);
+
+          svg {
+            path {
+              fill: var(--neutral-550);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &--icon-left {
+    .link {
+      svg {
+        order: 1;
+      }
+
+      span {
+        order: 2;
+      }
+    }
+  }
+}
+

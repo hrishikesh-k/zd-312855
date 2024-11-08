@@ -1,0 +1,497 @@
+/*
+ ! DEV NOTE: Refrain from adding any CSS classes or styling directly within this
+ ! file.  All component-specific styles should be defined within their respective
+ ! SCSS files. Each component should have its own dedicated SCSS file.  By
+ ! adhering to these guidelines, we can ensure consistency, modularity, and
+ ! maintainability within our codebase, facilitating smoother collaboration and
+ ! development processes.
+ */
+
+@use 'sass:math';
+@import './variables';
+
+@function stripUnit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+@function rem($pxValue) {
+  @return #{calc(stripUnit($pxValue) / stripUnit($html-font-size))}rem;
+}
+
+@mixin mobile {
+  @media (max-width: #{$bpMaxMobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: $bpMinTablet), print {
+    @content;
+  }
+}
+@mixin large-tablet {
+  @media screen and (min-width: $bpMinLargeTablet), print {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $bpMinDesktop), print {
+    @content;
+  }
+}
+
+@mixin large-desktop {
+  @media screen and (min-width: $bpMinLargeDesktop), print {
+    @content;
+  }
+}
+
+@mixin extra-large-desktop {
+  @media screen and (min-width: $bpMinExtraLargeDesktop), print {
+    @content;
+  }
+}
+
+@mixin transition($type, $duration: $animTime, $easing: $easeOutExpo) {
+  transition-property: $type;
+  transition-duration: $duration;
+  transition-timing-function: $easing;
+}
+
+@mixin normalise-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+// Absolute Center
+@mixin absolute-center {
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@mixin centering-the-unknown {
+  transform: translate(-50%, -50%);
+  left: 50%;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  width: 50%;
+}
+
+@mixin vertically-centering-the-unknown {
+  transform: translate(0, -50%);
+  position: absolute;
+  top: 50%;
+}
+
+@mixin reset-centering {
+  position: static;
+  transform: none;
+  top: 0;
+}
+
+// Only display content to screen readers
+// See: http://a11yproject.com/posts/how-to-hide-content/
+@mixin vh {
+  visibility: hidden;
+}
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+// Useful for "Skip to main content" links see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Credit: HTML5 Boilerplate
+@mixin sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
+@mixin no-scrollbar {
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// * TYPOGRPAHY
+
+// * Heading
+@mixin heading-1 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-xl-1);
+  line-height: rem($font-height-xl-1);
+  letter-spacing: $letter-spacing-sm;
+}
+
+//Not consistent
+@mixin heading-1-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-5);
+  line-height: rem($font-height-lg-1);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-2 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-1);
+  line-height: rem($font-height-md-3);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-2-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-5);
+  line-height: rem($font-height-md-2);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-3 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-4);
+  line-height: rem($font-height-md-1);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-3-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-4);
+  line-height: rem($font-height-md-1);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-4 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-2);
+  line-height: rem($font-height-sm-5);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-4-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-2);
+  line-height: rem($font-height-sm-5);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-5 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-sm-4);
+  line-height: rem($font-height-sm-4);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-5-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-sm-4);
+  line-height: rem($font-height-sm-4);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-6 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-sm-3);
+  line-height: rem($font-height-sm-3);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin heading-6-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-sm-3);
+  line-height: rem($font-height-sm-3);
+  letter-spacing: $letter-spacing-sm;
+}
+
+// * Display
+@mixin display-1 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-xl-1);
+  line-height: rem($font-height-xl-1);
+  letter-spacing: $letter-spacing-sm;
+}
+@mixin display-1-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-9);
+  line-height: rem($font-height-lg-3);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-2 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-10);
+  line-height: rem($font-height-lg-7);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-2-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-5);
+  line-height: rem($font-height-lg-1);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-3 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-8);
+  line-height: rem($font-height-lg-3);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-3-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-3);
+  line-height: rem($font-height-lg-2);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-4 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-7);
+  line-height: rem($font-height-lg-6);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-4-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-5);
+  line-height: rem($font-height-md-2);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-5 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-5);
+  line-height: rem($font-height-lg-4);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-5-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-3);
+  line-height: rem($font-height-md-1);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-6 {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-lg-3);
+  line-height: rem($font-height-lg-2);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin display-6-small {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-3);
+  line-height: rem($font-height-sm-5);
+  letter-spacing: $letter-spacing-sm;
+}
+
+// * / Misc
+@mixin lead {
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-4);
+  line-height: rem($font-height-md-2);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin lead-small {
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-3);
+  line-height: rem($font-height-md-1);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin block-quote {
+  font-family: $font-secondary;
+  font-weight: $font-weight-medium;
+  font-size: rem($font-size-lg-1);
+  line-height: rem($font-height-lg-1);
+  letter-spacing: $letter-spacing-sm;
+  font-style: italic;
+}
+@mixin block-quote-small {
+  font-family: $font-secondary;
+  font-weight: $font-weight-medium;
+  font-size: rem($font-size-md-4);
+  line-height: rem($font-height-md-1);
+  letter-spacing: $letter-spacing-sm;
+  font-style: italic;
+}
+
+@mixin citation {
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-2);
+  line-height: rem($font-height-sm-5);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin citation-small {
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-2);
+  line-height: rem($font-height-sm-5);
+  letter-spacing: $letter-spacing-sm;
+}
+
+@mixin subheading {
+  font-family: $font-primary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-sm-1);
+  line-height: rem($font-height-sm-1);
+  letter-spacing: $letter-spacing-md;
+}
+
+@mixin body-large {
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-md-2);
+  line-height: rem($font-height-sm-5);
+}
+
+@mixin body-large-heavy {
+  font-family: $font-secondary;
+  font-weight: $font-weight-semibold;
+  font-size: rem($font-size-md-2);
+  line-height: rem($font-height-sm-5);
+}
+
+@mixin body-medium {
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-sm-4);
+  line-height: rem($font-height-sm-4);
+}
+
+@mixin body-medium-heavy {
+  font-family: $font-secondary;
+  font-weight: $font-weight-semibold;
+  font-size: rem($font-size-sm-4);
+  line-height: rem($font-height-sm-4);
+}
+
+@mixin body-small {
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-sm-3);
+  line-height: rem($font-height-sm-3);
+}
+
+@mixin body-small-heavy {
+  font-family: $font-secondary;
+  font-weight: $font-weight-semibold;
+  font-size: rem($font-size-sm-3);
+  line-height: rem($font-height-sm-3);
+}
+
+@mixin caption {
+  font-family: $font-secondary;
+  font-weight: $font-weight-regular;
+  font-size: rem($font-size-sm-2);
+  line-height: rem($font-height-sm-2);
+}
+
+@mixin caption-heavy {
+  font-family: $font-secondary;
+  font-weight: $font-weight-bold;
+  font-size: rem($font-size-sm-2);
+  line-height: rem($font-height-sm-2);
+}
+
+@mixin cta-label-large {
+  font-family: $font-secondary;
+  font-weight: $font-weight-bold;
+  font-size: rem($font-size-sm-4);
+  line-height: rem($font-height-sm-4);
+}
+
+@mixin cta-label-small {
+  font-family: $font-secondary;
+  font-weight: $font-weight-bold;
+  font-size: rem($font-size-sm-3);
+  line-height: rem($font-height-sm-3);
+}
+
+@mixin badge-label-small {
+  font-family: $font-secondary;
+  font-weight: $font-weight-bold;
+  font-size: rem($font-size-sm-1);
+  line-height: rem($font-height-sm-1);
+}
+@mixin badge-label-medium {
+  font-family: $font-secondary;
+  font-weight: $font-weight-medium;
+  font-size: rem($font-size-sm-2);
+  line-height: rem($font-height-sm-1);
+}
+
+@mixin badge-label-large {
+  font-family: $font-secondary;
+  font-weight: $font-weight-medium;
+  font-size: rem($font-size-sm-3);
+  line-height: rem($font-height-sm-3);
+}
+
+@mixin tag {
+  font-family: $font-secondary;
+  font-weight: $font-weight-bold;
+  font-size: rem($font-size-sm-1);
+  line-height: rem($font-height-sm-1);
+}
+
+@mixin utility-menu-item {
+  font-family: $font-secondary;
+  font-weight: $font-weight-bold;
+  font-size: rem($font-size-sm-1);
+  line-height: rem($font-height-sm-1);
+}
+

@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.base.json",
+  "root": true,
+  "exclude": ["node_modules", "build", "dist", "public", "./template-generator/*"]
+}

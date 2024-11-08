@@ -5,7 +5,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nx run-many -t build",
+    "build": "nx run-many -t --skip-nx-cache build",
     "build:affected": "nx affected -t build",
     "release": "nx release --verbose --skip-publish && nx release publish",
     "test": "nx run-many -t test --passWithNoTests",
